@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation = "2dp"
+        app:cardCornerRadius = "3dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/layout_plan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text_membership_plan_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Gold"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/montserrat_bold"/>
+
+                <TextView
+                    android:id="@+id/text_membership_plan_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="200 Rs"
+                    android:textColor="@color/dark_font"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/montserrat_regular"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_membership_plan_validiy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="12 Months"
+                android:textColor="@color/dark_font"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"/>
+
+            <com.universalapp.sankalp.learningapp.ExpandView.ExpandableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_expanded="true"
+                app:el_duration="500"
+                android:layout_marginTop="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/text_access_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video"
+                        android:textSize="14sp"
+                        android:layout_weight="2"
+                        android:textColor="@color/dark_font"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/montserrat_medium"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Video"
+                            android:textSize="14sp"
+                            android:layout_weight="2"
+                            android:textColor="@color/dark_font"
+                            android:fontFamily="@font/montserrat_medium"/>
+
+                        <ImageView
+                            android:id="@+id/image_video_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_payment_success"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Quiz"
+                            android:textSize="14sp"
+                            android:layout_weight="2"
+                            android:textColor="@color/dark_font"
+                            android:fontFamily="@font/montserrat_medium"/>
+
+                        <ImageView
+                            android:id="@+id/image_quiz_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_payment_success"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Material"
+                            android:textSize="14sp"
+                            android:layout_weight="2"
+                            android:textColor="@color/dark_font"
+                            android:fontFamily="@font/montserrat_medium"/>
+
+                        <ImageView
+                            android:id="@+id/image_material_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_payment_success"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.universalapp.sankalp.learningapp.ExpandView.ExpandableLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

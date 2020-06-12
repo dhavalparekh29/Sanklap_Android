@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F37D71</color>
+    <color name="colorPrimaryDark">#F16886</color>
+    <color name="colorAccent">#EE436E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dark_font">#696969</color>
+    <color name="light_font">#D3D3D3</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+
+    <color name="video_transparent_background">#80000000</color>
+
+
+</resources>

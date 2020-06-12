@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Subject: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_subject_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chapter: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_chapter_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total attempt: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_total_attempt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total questions: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_total_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total correct: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_total_correct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total score: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_total_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10/40"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

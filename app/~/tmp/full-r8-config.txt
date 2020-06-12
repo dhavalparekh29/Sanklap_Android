@@ -1,0 +1,835 @@
+# This is a configuration file for ProGuard.
+# http://proguard.sourceforge.net/index.html#manual/usage.html
+#
+# Starting with version 2.2 of the Android plugin for Gradle, this file is distributed together with
+# the plugin and unpacked at build-time. The files in $ANDROID_HOME are no longer maintained and
+# will be ignored by new version of the Android plugin for Gradle.
+
+# Optimization is turned off by default. Dex does not like code run
+# through the ProGuard optimize steps (and performs some
+# of these optimizations on its own).
+# Note that if you want to enable optimization, you cannot just
+# include optimization flags in your own project configuration file;
+# instead you will need to point to the
+# "proguard-android-optimize.txt" file instead of this one from your
+# project.properties file.
+-dontoptimize
+
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+
+# Preserve some attributes that may be required for reflection.
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod
+
+-keep public class com.google.vending.licensing.ILicensingService
+-keep public class com.android.vending.licensing.ILicensingService
+-keep public class com.google.android.vending.licensing.ILicensingService
+-dontnote com.android.vending.licensing.ILicensingService
+-dontnote com.google.vending.licensing.ILicensingService
+-dontnote com.google.android.vending.licensing.ILicensingService
+
+# For native methods, see http://proguard.sourceforge.net/manual/examples.html#native
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# Keep setters in Views so that animations can still work.
+-keepclassmembers public class * extends android.view.View {
+    void set*(***);
+    *** get*();
+}
+
+# We want to keep methods in Activity that could be used in the XML attribute onClick.
+-keepclassmembers class * extends android.app.Activity {
+    public void *(android.view.View);
+}
+
+# For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+# Preserve annotated Javascript interface methods.
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
+# The support libraries contains references to newer platform versions.
+# Don't warn about those in case this app is linking against an older
+# platform version. We know about them, and they are safe.
+-dontnote android.support.**
+-dontnote androidx.**
+-dontwarn android.support.**
+-dontwarn androidx.**
+
+# This class is deprecated, but remains for backward compatibility.
+-dontwarn android.util.FloatMath
+
+# Understand the @Keep support annotation.
+-keep class android.support.annotation.Keep
+-keep class androidx.annotation.Keep
+
+-keep @android.support.annotation.Keep class * {*;}
+-keep @androidx.annotation.Keep class * {*;}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep <init>(...);
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <init>(...);
+}
+
+# These classes are duplicated between android.jar and org.apache.http.legacy.jar.
+-dontnote org.apache.http.**
+-dontnote android.net.http.**
+
+# These classes are duplicated between android.jar and core-lambda-stubs.jar.
+-dontnote java.lang.invoke.**
+
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+-printconfiguration ~/tmp/full-r8-config.txt
+-keep public class MyClass
+-keepclassmembers class com.paytm.pgsdk.paytmWebView$PaytmJavaScriptInterface {
+   public *;
+}
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:32
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:142
+-keep class androidx.core.content.FileProvider { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:202
+-keep class com.crashlytics.android.CrashlyticsInitProvider { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:302
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:315
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:309
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:293
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:258
+-keep class com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:272
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:253
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:268
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:248
+-keep class com.google.android.play.core.assetpacks.AssetPackExtractionService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:242
+-keep class com.google.android.play.core.common.PlayCoreDialogWrapperActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:235
+-keep class com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:218
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:278
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:211
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:287
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:177
+-keep class com.paytm.pgsdk.IntentServicePostNotification { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:180
+-keep class com.paytm.pgsdk.IntentServicePreNotification { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:172
+-keep class com.paytm.pgsdk.PaytmPGActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:187
+-keep class com.paytm.pgsdk.easypay.utils.AnalyticsService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:183
+-keep class com.paytm.pgsdk.easypay.utils.EasypayLoaderService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:192
+-keep class com.squareup.picasso.PicassoProvider { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:32
+-keep class com.universalapp.sankalp.learningapp.MyApplication { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:125
+-keep class com.universalapp.sankalp.learningapp.customYoutubePlayer.YouTubePlayerActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:152
+-keep class com.universalapp.sankalp.learningapp.firebase.MyFirebaseMessagingService { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:91
+-keep class com.universalapp.sankalp.learningapp.view.activities.ChapterActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:54
+-keep class com.universalapp.sankalp.learningapp.view.activities.ContactUsActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:113
+-keep class com.universalapp.sankalp.learningapp.view.activities.EditProfileActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:42
+-keep class com.universalapp.sankalp.learningapp.view.activities.EducationalSupportActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:87
+-keep class com.universalapp.sankalp.learningapp.view.activities.HomeActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:51
+-keep class com.universalapp.sankalp.learningapp.view.activities.LeadersBoardActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:74
+-keep class com.universalapp.sankalp.learningapp.view.activities.LoginActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:63
+-keep class com.universalapp.sankalp.learningapp.view.activities.MainActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:57
+-keep class com.universalapp.sankalp.learningapp.view.activities.MaterialActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:130
+-keep class com.universalapp.sankalp.learningapp.view.activities.MembershipPackActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:83
+-keep class com.universalapp.sankalp.learningapp.view.activities.OTPActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:62
+-keep class com.universalapp.sankalp.learningapp.view.activities.PaymentActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:61
+-keep class com.universalapp.sankalp.learningapp.view.activities.PaymentResponseActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:109
+-keep class com.universalapp.sankalp.learningapp.view.activities.QuizActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:79
+-keep class com.universalapp.sankalp.learningapp.view.activities.SignupActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:95
+-keep class com.universalapp.sankalp.learningapp.view.activities.SubChapterActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:48
+-keep class com.universalapp.sankalp.learningapp.view.activities.SupportActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:45
+-keep class com.universalapp.sankalp.learningapp.view.activities.TechnicalSupportActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:117
+-keep class com.universalapp.sankalp.learningapp.view.activities.TestInstructionActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:121
+-keep class com.universalapp.sankalp.learningapp.view.activities.TestReportActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:99
+-keep class com.universalapp.sankalp.learningapp.view.activities.VideoListActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:103
+-keep class com.universalapp.sankalp.learningapp.view.activities.VideoPlayerActivity { <init>(); }
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:197
+-keep class es.voghdev.pdfviewpager.library.service.CopyAssetService { <init>(); }
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_title_material.xml:56
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_material.xml:52
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_button_bar_material.xml:43
+-keep class android.widget.Space { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_select_dialog_material.xml:23
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_action_menu_item_layout.xml:17
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_expanded_menu_layout.xml:17
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_popup_menu_item_layout.xml:17
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_list_menu_item_layout.xml:17
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_cascading_menu_item_layout.xml:20
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_toolbar.xml:27
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_toolbar.xml:43
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_action_mode_bar.xml:19
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_toolbar.xml:17
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_action_menu_layout.xml:17
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_activity_chooser_view.xml:19
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_material.xml:18
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_button_bar_material.xml:26
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_content_include.xml:19
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_title_material.xml:45
+-keep class androidx.appcompat.widget.DialogTitle { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_simple_overlay_action_mode.xml:23
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_simple.xml:17
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_dialog_title_material.xml:22
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_search_view.xml:75
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_toolbar.xml:36
+-keep class androidx.appcompat.widget.Toolbar { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_simple_overlay_action_mode.xml:32
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_screen_simple.xml:25
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\nav_item_layout.xml:12
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\layout_test_pager.xml:9
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_video_layout.xml:8
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_standard_layout.xml:6
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_report_subject_wise.xml:7
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_report_general_wise.xml:7
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_report_chapter_wise.xml:7
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_membership_layout.xml:7
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_leader_board_score.xml:7
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\31da03b96e842c3365efff965e86652d\jetified-pgplussdk-1.3.3\res\layout\custom_progress_dialog_view.xml:2
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_signup.xml:11
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_quiz.xml:39
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_otp.xml:11
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_login.xml:11
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_leaders_board.xml:32
+-keep class androidx.cardview.widget.CardView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_payment.xml:2
+-keep class androidx.constraintlayout.widget.ConstraintLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_bottom_sheet_dialog.xml:26
+-keep class androidx.coordinatorlayout.widget.CoordinatorLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fde207d95f35b6102c040166774eaef4\appcompat-1.1.0-alpha01\res\layout\abc_alert_dialog_material.xml:41
+-keep class androidx.core.widget.NestedScrollView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_home.xml:2
+-keep class androidx.drawerlayout.widget.DrawerLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_volume_control.xml:45
+-keep class androidx.mediarouter.app.MediaRouteExpandCollapseButton { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_volume_control.xml:36
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_controller_volume_item.xml:47
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_cast_route_item.xml:66
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_cast_group_volume_item.xml:42
+-keep class androidx.mediarouter.app.MediaRouteVolumeSlider { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_controller_material_dialog_b.xml:90
+-keep class androidx.mediarouter.app.OverlayListView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\popup_subject_selection.xml:37
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\popup_chapter_selection.xml:47
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_picker_dialog.xml:35
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\80ae5e95dfb619a4893d98ca5ff9721c\mediarouter-1.1.0-rc01\res\layout\mr_cast_dialog.xml:23
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\layout_home_content.xml:60
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\fragment_report_list.xml:7
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\c470cbff7b337626994614d848e5d121\core-10.0.4\res\layout\ayp_player_menu.xml:11
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_video_list.xml:10
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_membership_pack.xml:21
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_leaders_board.xml:14
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_chapter.xml:76
+-keep class androidx.recyclerview.widget.RecyclerView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_test_report.xml:22
+-keep class androidx.viewpager.widget.ViewPager { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fc6b051d9c69a4b62cdd0bf2667412d2\jetified-library-1.0.6\res\layout\view_pdf_page.xml:13
+-keep class com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_bottom_navigation_item.xml:27
+-keep class com.google.android.material.internal.BaselineLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_text_input_password_icon.xml:18
+-keep class com.google.android.material.internal.CheckableImageButton { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_navigation_item.xml:17
+-keep class com.google.android.material.internal.NavigationMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_navigation_menu.xml:17
+-keep class com.google.android.material.internal.NavigationMenuView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_home.xml:23
+-keep class com.google.android.material.navigation.NavigationView { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\mtrl_layout_snackbar.xml:18
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_layout_snackbar.xml:18
+-keep class com.google.android.material.snackbar.Snackbar$SnackbarLayout { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\mtrl_layout_snackbar_include.xml:18
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\b2902f4683c7f04fb1a209de09e83b7b\material-1.0.0\res\layout\design_layout_snackbar_include.xml:18
+-keep class com.google.android.material.snackbar.SnackbarContentLayout { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_test_report.xml:11
+-keep class com.google.android.material.tabs.TabLayout { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\popup_edit_profile.xml:26
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_signup.xml:44
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_login.xml:71
+-keep class com.google.android.material.textfield.TextInputLayout { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_video_player.xml:8
+-keep class com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\custom_player_ui.xml:60
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\c470cbff7b337626994614d848e5d121\core-10.0.4\res\layout\ayp_default_player_ui.xml:110
+-keep class com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBar { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\item_membership_layout.xml:55
+-keep class com.universalapp.sankalp.learningapp.ExpandView.ExpandableLayout { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\layout_progress_loader.xml:10
+-keep class com.universalapp.sankalp.learningapp.customLoader.AVLoadingIndicatorView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\nav_item_layout.xml:26
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_edit_profile.xml:31
+-keep class com.universalapp.sankalp.learningapp.utils.CircleImageView { <init>(...); }
+
+# Referenced at C:\Workspace\Android Studio Project\sankalpthelearningapp-master\sankalpthelearningapp-master\app\src\main\res\layout\activity_quiz.xml:80
+-keep class com.universalapp.sankalp.learningapp.utils.NonSwipeableViewPager { <init>(...); }
+
+# Referenced at C:\Users\p.patel\.gradle\caches\transforms-2\files-2.1\fc6b051d9c69a4b62cdd0bf2667412d2\jetified-library-1.0.6\res\layout\view_zoomable_pdf_page.xml:6
+-keep class it.sephiroth.android.library.imagezoom.ImageViewTouch { <init>(...); }
+
+
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# CoordinatorLayout resolves the behaviors of its child components with reflection.
+-keep public class * extends androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>();
+}
+
+# Make sure we keep annotations for CoordinatorLayout's DefaultBehavior
+-keepattributes *Annotation*
+
+# Copyright 2019 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Prevent MediaRouteActionProvider from being removed or renamed.
+-keep class androidx.mediarouter.app.MediaRouteActionProvider { public <init>(...); }
+
+# Copyright (C) 2015 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# When layoutManager xml attribute is used, RecyclerView inflates
+#LayoutManagers' constructors using reflection.
+-keep public class * extends androidx.recyclerview.widget.RecyclerView$LayoutManager {
+    public <init>(android.content.Context, android.util.AttributeSet, int, int);
+    public <init>();
+}
+
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Ensure that reflectively-loaded inflater is not obfuscated. This can be
+# removed when we stop supporting AAPT1 builds.
+-keepnames class androidx.appcompat.app.AppCompatViewInflater
+
+# aapt is not able to read app::actionViewClass and app:actionProviderClass to produce proguard
+# keep rules. Add a commonly used SearchView to the keep list until b/109831488 is resolved.
+-keep class androidx.appcompat.widget.SearchView { <init>(...); }
+# Retain generated class which implement Unbinder.
+-keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }
+
+# Prevent obfuscation of types which use ButterKnife annotations since the simple name
+# is used to reflectively look up the generated ViewBinding.
+-keep class butterknife.*
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+
+### OKHTTP
+
+# Platform calls Class.forName on types which do not exist on Android to determine platform.
+-dontnote okhttp3.internal.Platform
+
+
+### OKIO
+
+# java.nio.file.* usage which cannot be used at runtime. Animal sniffer annotation.
+-dontwarn okio.Okio
+# JDK 7-only method which is @hide on Android. Animal sniffer annotation.
+-dontwarn okio.DeflaterSink
+-dontwarn com.crashlytics.android.ndk.CrashlyticsNdk
+# Analytics library is optional.
+# Access to this class is protected by try/catch(NoClassDefFoundError e)
+# b/35686744 Don't fail during proguard if the class is missing from the APK.
+-dontwarn com.google.android.gms.measurement.AppMeasurement*
+# Copyright (C) 2016 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# keep setters in VectorDrawables so that animations can still work.
+-keepclassmembers class androidx.vectordrawable.graphics.drawable.VectorDrawableCompat$* {
+   void set*(***);
+   *** get*();
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+-dontwarn com.google.firebase.platforminfo.KotlinDetector
+# b/35135904 Ensure that proguard will not strip the mResultGuardian.
+-keepclassmembers class com.google.android.gms.common.api.internal.BasePendingResult {
+  com.google.android.gms.common.api.internal.BasePendingResult$ReleasableResultGuardian mResultGuardian;
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzfd {
+  <fields>;
+}
+
+# Proguard flags for consumers of the Google Play services SDK
+# https://developers.google.com/android/guides/setup#add_google_play_services_to_your_project
+
+# Keep SafeParcelable NULL value, needed for reflection by DowngradeableSafeParcel
+-keepclassmembers public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+    public static final *** NULL;
+}
+
+# Needed for Parcelable/SafeParcelable classes & their creators to not get renamed, as they are
+# found via reflection.
+-keep class com.google.android.gms.common.internal.ReflectedParcelable
+-keepnames class * implements com.google.android.gms.common.internal.ReflectedParcelable
+-keepclassmembers class * implements android.os.Parcelable {
+  public static final *** CREATOR;
+}
+
+# Keep the classes/members we need for client functionality.
+-keep @interface androidx.annotation.Keep
+-keep @androidx.annotation.Keep class *
+-keepclasseswithmembers class * {
+  @androidx.annotation.Keep <fields>;
+}
+-keepclasseswithmembers class * {
+  @androidx.annotation.Keep <methods>;
+}
+
+# Keep the names of classes/members we need for client functionality.
+-keep @interface com.google.android.gms.common.annotation.KeepName
+-keepnames @com.google.android.gms.common.annotation.KeepName class *
+-keepclassmembernames class * {
+  @com.google.android.gms.common.annotation.KeepName *;
+}
+
+# Keep Dynamite API entry points
+-keep @interface com.google.android.gms.common.util.DynamiteApi
+-keep @com.google.android.gms.common.util.DynamiteApi public class * {
+  public <fields>;
+  public <methods>;
+}
+
+# Needed when building against pre-Marshmallow SDK.
+-dontwarn android.security.NetworkSecurityPolicy
+
+# Needed when building against Marshmallow SDK.
+-dontwarn android.app.Notification
+
+# Protobuf has references not on the Android boot classpath
+-dontwarn sun.misc.Unsafe
+-dontwarn libcore.io.Memory
+
+# Internal Google annotations for generating Proguard keep rules.
+-dontwarn com.google.android.apps.common.proguard.UsedBy*
+
+# Annotations referenced by the SDK but whose definitions are contained in
+# non-required dependencies.
+-dontwarn javax.annotation.**
+-dontwarn org.checkerframework.**
+# Copyright (C) 2017 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Prevent Parcelable objects from being removed or renamed.
+-keep class android.support.v4.media.** implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# Prevent Parcelable objects from being removed or renamed.
+-keep class androidx.media.** implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+# Copyright (C) 2017 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Keep a field in transition that is used to keep a reference to weakly-referenced object
+-keepclassmembers class androidx.transition.ChangeBounds$* extends android.animation.AnimatorListenerAdapter {
+  androidx.transition.ChangeBounds$ViewBounds mViewBounds;
+}
+
+# Copyright (C) 2016 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# CoordinatorLayout resolves the behaviors of its child components with reflection.
+-keep public class * extends androidx.coordinatorlayout.widget.CoordinatorLayout$Behavior {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>();
+}
+
+# Make sure we keep annotations for CoordinatorLayout's DefaultBehavior and ViewPager's DecorView
+-keepattributes *Annotation*
+
+# aapt2 is not (yet) keeping FQCNs defined in the appComponentFactory <application> attribute
+-keep class androidx.core.app.CoreComponentFactory
+
+-keep public class * implements androidx.versionedparcelable.VersionedParcelable
+-keep public class android.support.**Parcelizer { *; }
+-keep public class androidx.**Parcelizer { *; }
+-keep public class androidx.versionedparcelable.ParcelImpl
+
+-keepattributes *Annotation*
+
+-keepclassmembers enum androidx.lifecycle.Lifecycle$Event {
+    <fields>;
+}
+
+-keep !interface * implements androidx.lifecycle.LifecycleObserver {
+}
+
+-keep class * implements androidx.lifecycle.GeneratedAdapter {
+    <init>(...);
+}
+
+-keepclassmembers class ** {
+    @androidx.lifecycle.OnLifecycleEvent *;
+}
+-dontwarn com.google.firebase.components.Component$Instantiation
+-dontwarn com.google.firebase.components.Component$ComponentType
+-keep class * implements com.google.firebase.components.ComponentRegistrar
+
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.ViewModel {
+    <init>();
+}
+
+-keepclassmembers,allowobfuscation class * extends androidx.lifecycle.AndroidViewModel {
+    <init>(android.app.Application);
+}
+
+-keep,allowobfuscation @interface androidx.annotation.Keep
+-keep @androidx.annotation.Keep class * {*;}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep <init>(...);
+}
+
+# Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
+# EnclosingMethod is required to use InnerClasses.
+-keepattributes Signature, InnerClasses, EnclosingMethod
+
+# Retrofit does reflection on method and parameter annotations.
+-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+
+# Retain service method parameters when optimizing.
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+
+# Ignore annotation used for build tooling.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+
+# Ignore JSR 305 annotations for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# Guarded by a NoClassDefFoundError try/catch and only used when on the classpath.
+-dontwarn kotlin.Unit
+
+# Top-level functions that can only be used by Kotlin.
+-dontwarn retrofit2.KotlinExtensions
+-dontwarn retrofit2.KotlinExtensions$*
+
+# With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
+# and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface <1>
+
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt dependency is available.
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+
+# Answers Proguard Config
+-dontwarn com.google.firebase.analytics.FirebaseAnalytics
+-dontwarn com.google.firebase.analytics.FirebaseAnalytics$Event
+-dontwarn com.google.firebase.analytics.FirebaseAnalytics$Param
+# Fabric Proguard Config
+-keep class com.google.android.gms.common.GooglePlayServicesUtil {*;}
+-keep class com.google.android.gms.ads.identifier.AdvertisingIdClient {*;}
+-keep class com.google.android.gms.ads.identifier.AdvertisingIdClient$Info {*;}
+-keep class com.google.android.gms.measurement.AppMeasurement$OnEventListener {*;}
+-keep class com.google.android.gms.measurement.AppMeasurement {
+    static com.google.android.gms.measurement.AppMeasurement getInstance(android.content.Context, java.lang.String, java.lang.String);
+    void registerOnMeasurementEventListener(com.google.android.gms.measurement.AppMeasurement$OnEventListener);
+}
+-keep class com.google.firebase.FirebaseApp {
+    static com.google.firebase.FirebaseApp getInstance();
+    boolean isDataCollectionDefaultEnabled();
+}
+
+-ignorewarnings

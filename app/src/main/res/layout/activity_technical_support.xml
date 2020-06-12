@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/layout_top_actionbar_view_inner"/>
+
+
+    <RadioGroup
+        android:id="@+id/radio_group_technical_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <RadioButton
+            android:id="@+id/radio_button_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:fontFamily="@font/montserrat_regular"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_membership_plan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Membership Plan"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginTop="10dp"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payment"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginTop="10dp"
+            />
+        <RadioButton
+            android:id="@+id/radio_button_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginTop="10dp"
+            />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edit_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/profile_form_edit_text_multiline_height"
+        android:fontFamily="@font/montserrat_regular"
+        android:hint="Description"
+        android:inputType="text"
+        android:maxLength="2000"
+        android:gravity="top"
+        android:focusedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_edittext_form_border"
+        android:textColor="@color/dark_font"
+        android:padding="10dp"
+        android:textColorHint="@color/dark_font"
+        android:textSize="@dimen/edit_text_form_font_size"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Request to Resolve"
+        android:layout_gravity="right"
+        style="@style/Button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>

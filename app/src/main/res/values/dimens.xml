@@ -1,0 +1,47 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="login_signup_logo">80dp</dimen>
+
+    <dimen name="menu_line_margin">20dp</dimen>
+
+    <dimen name="side_menu_icon_helight_width">30dp</dimen>
+
+    <dimen name="menu_title_size">16sp</dimen>
+
+    <dimen name="tall_toolbar_height">50dp</dimen>
+    <dimen name="version_text_size">12sp</dimen>
+
+    <dimen name="profile_icons">20dp</dimen>
+
+    <dimen name="profile_form_text_input_layout_height">50dp</dimen>
+    <dimen name="profile_form_edit_text_height">40dp</dimen>
+    <dimen name="profile_form_edit_text_multiline_height">100dp</dimen>
+    <dimen name="profile_form_spinner_height">55dp</dimen>
+
+    <dimen name="edit_text_form_font_size">12sp</dimen>
+    <!--Custom Calender start-->
+
+    <dimen name="roboto_calendar_padding">8dp</dimen>
+    <dimen name="roboto_calendar_month_margin_bottom">8dp</dimen>
+    <dimen name="roboto_calendar_week_margin_bottom">5dp</dimen>
+    <dimen name="roboto_calendar_day_of_the_month_background_size">40dp</dimen>
+    <dimen name="roboto_calendar_circle_size">4dp</dimen>
+    <dimen name="roboto_calendar_ring_size">18dp</dimen>
+    <dimen name="roboto_calendar_month_font">16sp</dimen>
+    <dimen name="roboto_calendar_day_of_week_font">16sp</dimen>
+    <dimen name="roboto_calendar_day_of_the_month_font">16sp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_icon_height_width">30dp</dimen>
+
+    <dimen name="video_list_height">180dp</dimen>
+
+    <!--Custom Calender end-->
+</resources>

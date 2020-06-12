@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:padding="10dp">
+
+
+    <com.universalapp.sankalp.learningapp.customLoader.AVLoadingIndicatorView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:background="@android:color/transparent"
+        app:indicatorColor="@color/colorPrimary"
+        />
+
+
+    <TextView
+        android:id="@+id/text_loader_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@android:color/transparent"/>
+</RelativeLayout>

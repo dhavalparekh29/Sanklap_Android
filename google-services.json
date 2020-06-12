@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "909068041240",
+    "firebase_url": "https://sankalp-a009d.firebaseio.com",
+    "project_id": "sankalp-a009d",
+    "storage_bucket": "sankalp-a009d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909068041240:android:a7e0338c9ffa5f2303176d",
+        "android_client_info": {
+          "package_name": "com.universalapp.sankalp.learningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909068041240-9jejud9lqc87ivrlhudepvr3tmcha4cn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ6TpHcFfvg4RK0H7d5f0ZgtFHQE5HzAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909068041240-9jejud9lqc87ivrlhudepvr3tmcha4cn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

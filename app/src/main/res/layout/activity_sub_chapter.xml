@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_actionbar_view_inner"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/layout_video"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sub_chapter_video_gradient">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_video"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Video "
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sub_chapter_quiz_gradient">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_quiz_test"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Quiz"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+    </LinearLayout><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/layout_material"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sub_chapter_video_gradient">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_material"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Material "
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_leaders_board"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/shape_sub_chapter_quiz_gradient">
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_leaders_board_white"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Leaders Board"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

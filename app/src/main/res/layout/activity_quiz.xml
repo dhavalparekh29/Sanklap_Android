@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_actionbar_view_inner"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Submit Test"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_gravity="right"
+            style="@style/Button"/>
+
+    <TextView
+        android:id="@+id/text_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 seconds"
+        android:layout_gravity="right"
+        android:textSize="16sp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/dark_font"/>
+
+    </RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp">>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image_previous"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="invisible"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_previous"/>
+
+        <TextView
+            android:id="@+id/text_number_of_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="1/30"
+            android:textColor="@color/dark_font"
+            android:textSize="14sp"
+            android:fontFamily="@font/montserrat_bold"/>
+
+        <ImageView
+            android:id="@+id/image_next"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_next"/>
+
+
+
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <com.universalapp.sankalp.learningapp.utils.NonSwipeableViewPager
+        android:id="@+id/viewpager_test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.universalapp.sankalp.learningapp.utils.NonSwipeableViewPager>
+
+</LinearLayout>

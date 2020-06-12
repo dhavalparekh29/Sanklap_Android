@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_actionbar_view_inner"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_leaders_board_report"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_above="@+id/card_self_score"/>
+        <TextView
+            android:id="@+id/text_no_result_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No score available"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_regular"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_self_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
+
+
+                <TextView
+                    android:id="@+id/text_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total questions: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_total_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Score: "
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent">
+
+
+                <com.universalapp.sankalp.learningapp.utils.CircleImageView
+
+                    android:id="@+id/image_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/im_temp_profile"
+                    app:civ_border_color="@color/dark_font"/>
+
+                <ImageView
+                    android:id="@+id/image_update_profile_picture"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_edit_pink"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                >
+                <TextView
+                    android:id="@+id/text_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="right"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/dark_font"
+                    android:background="@android:color/transparent" />
+            <TextView
+                    android:id="@+id/text_subject_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="right"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/dark_font"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+        </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Details"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/montserrat_medium"/>
+
+                <ImageView
+                    android:id="@+id/image_edit_details"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_edit_pink"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_phone"/>
+                <TextView
+                    android:id="@+id/text_user_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+91 9876543210"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_email"/>
+                <TextView
+                    android:id="@+id/text_user_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="princempatel04@gmail.com"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/dark_font"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Plan Details"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/montserrat_medium"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/text_active_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="No membership plans available"
+                    android:layout_gravity="left"
+                    android:textColor="@color/dark_font"
+                    android:textSize="16sp"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/montserrat_regular"/>
+
+                <TextView
+                    android:id="@+id/text_validity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="No membership plans available"
+                    android:layout_gravity="left"
+                    android:textColor="@color/dark_font"
+                    android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat_regular"/>
+                <TextView
+                    android:id="@+id/text_plan_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Video"
+                    android:textSize="14sp"
+                    android:layout_weight="2"
+                    android:textColor="@color/dark_font"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/montserrat_medium"/>
+<TextView
+                    android:id="@+id/text_access_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Video"
+                    android:textSize="14sp"
+                    android:layout_weight="2"
+                    android:textColor="@color/dark_font"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/montserrat_medium"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Video"
+                        android:textSize="14sp"
+                        android:layout_weight="2"
+                        android:textColor="@color/dark_font"
+                        android:fontFamily="@font/montserrat_medium"/>
+
+                    <ImageView
+                        android:id="@+id/image_video_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_payment_success"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz"
+                        android:textSize="14sp"
+                        android:layout_weight="2"
+                        android:textColor="@color/dark_font"
+                        android:fontFamily="@font/montserrat_medium"/>
+
+                    <ImageView
+                        android:id="@+id/image_quiz_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_payment_success"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Material"
+                        android:textSize="14sp"
+                        android:layout_weight="2"
+                        android:textColor="@color/dark_font"
+                        android:fontFamily="@font/montserrat_medium"/>
+
+                    <ImageView
+                        android:id="@+id/image_material_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_payment_success"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
